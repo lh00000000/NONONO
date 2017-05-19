@@ -1,0 +1,20 @@
+{
+  "name": "NO NO NO",
+  "description": "NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO ",
+  "version": "2.0",
+  "content_scripts": [{
+    "matches": [
+        "*://*/*"
+    ],
+    "js": [
+      "jquery-3.2.1.min.js",
+      "lodash.min.js",
+      "compromise.min.js",
+      "content.js"
+    ]
+  }],
+  "browser_action": {
+    "default_title": "NO"
+  },
+  "manifest_version": 2
+}
