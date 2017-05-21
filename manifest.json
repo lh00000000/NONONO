@@ -1,20 +1,25 @@
 {
-  "name": "NO NO NO",
-  "description": "NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO ",
-  "version": "2.0",
-  "content_scripts": [{
-    "matches": [
-        "*://*/*"
-    ],
-    "js": [
-      "jquery-3.2.1.min.js",
-      "lodash.min.js",
-      "compromise.min.js",
-      "content.js"
-    ]
-  }],
-  "browser_action": {
-    "default_title": "NO"
-  },
-  "manifest_version": 2
+    "name": "NO NO NO",
+    "description": "NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO ",
+    "version": "2.0",
+    "content_scripts": [{
+        "matches": [
+            "*://*/*"
+        ],
+        "js": [
+            "jquery-3.2.1.min.js",
+            "lodash.min.js",
+            "compromise.min.js",
+            "content.js"
+        ]
+    }],
+    "browser_action": {
+        "default_title": "NO"
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "manifest_version": 2
 }
