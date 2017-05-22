@@ -2,7 +2,7 @@
     "name": "NO NO NO",
     "short_name": "NO NO NO",
     "description": "NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO ",
-    "version": "3.0",
+    "version": "3.2",
     "content_scripts": [{
         "matches": [
             "*://*/*"

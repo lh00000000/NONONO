@@ -1,6 +1,6 @@
 const bodyTags = ["p", "li", "strong", "a", "span"]
 const titleTags = _.map(_.range(1, 7), num => "h" + num)
-const acceptableChildren = new Set(["B", "I", "A", "SPAN"])
+const acceptableChildren = new Set(["B", "I", "SPAN"])
 
 // return all Dom elements given a list of tags
 const allElements = tagList => _.flatMap(
@@ -41,7 +41,9 @@ const strNegate = str => str
     .replace(/ may /g, " may not ")
     .replace(/ is /g, " is not ")
     .replace(/ Is /g, " Is not ")
-    .replace(/ not not /gi, " not ") //cleanup
+    .replace(/ Cannot Not /g, " Cannot ") //cleanup
+    .replace(/ cannot not /g, " cannot ")
+    .replace(/ not not /gi, " not ")
 
 const strCapitalize = str => _.map(str.split('.'), _.capitalize).join('.')
 
