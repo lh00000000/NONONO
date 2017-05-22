@@ -1,5 +1,6 @@
 const bodyTags = ["p", "li", "strong", "a", "span"]
 const titleTags = _.map(_.range(1, 7), num => "h" + num)
+const acceptableChildren = new Set(["B", "I", "A", "SPAN"])
 
 // return all Dom elements given a list of tags
 const allElements = tagList => _.flatMap(
@@ -8,14 +9,22 @@ const allElements = tagList => _.flatMap(
 
 // return if the element has Big Kids or not
 // maybe : only check for divs / allow for bold / spans / italics / a
-const hasStructuralKids = ele => {
-    return $(ele).children().length == 1 || _.some(_.map($(ele).children(), child => {
-    return $(child).html().length > 8 || $(child).children().length > 0 || (
-        $(child).prop("tagName") === "DIV")
-    }))
+const isProblemChild = child => {
+    const jqChild = $(child)
+
+    let getsFreePass = acceptableChildren.has(jqChild.prop("tagName"))
+    let hasItsOwnKids = jqChild.children().length > 0
+    let isADarnDiv = jqChild.prop("tagName") === "DIV"
+    return !getsFreePass && (hasItsOwnKids || isADarnDiv)
+}
+const isStructural = ele => {
+    let jqEle = $(ele)
+    let onlyHasOneKid = jqEle.children().length == 1 && jqEle.html().startsWith("<")
+    let hasProblemKids = _.some(_.map(jqEle.children(), isProblemChild))
+    return hasProblemKids || onlyHasOneKid
 }
 
-const allElementsClean = tagList => _.filter(allElements(tagList), _.negate(hasStructuralKids))
+const allElementsClean = tagList => _.filter(allElements(tagList), _.negate(isStructural))
 
 const nlpNegate = nlpInst => nlpInst.sentences().toNegative()
 const nlpToStr = nlpInst => nlpInst.out("text").trim()
